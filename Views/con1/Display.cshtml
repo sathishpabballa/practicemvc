@@ -1,0 +1,40 @@
+﻿@model IEnumerable<practicemvc.Models.model1>
+@{
+    ViewBag.Title = "Display";
+}
+
+<h2>Display</h2>
+
+<p>@Html.ActionLink("New Record","Insert")</p>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>PASSWORD</th>
+        <th>ADDRESS</th>
+        <th>ACTION</th>
+    </tr>
+    @foreach (var a in Model)
+    { 
+    <tr>
+    <td>
+        @Html.DisplayFor(e => a.id)
+    </td>
+    <td>
+        @Html.DisplayFor(e => a.name)
+    </td>
+    <td>
+        @Html.DisplayFor(e => a.password)
+    </td>
+    <td>
+        @Html.DisplayFor(e => a.address)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Update", new { id = a.id })|
+        @Html.ActionLink("Delete", "Delete", new { id = a.id },new {onclick="return confirm('r u sure  to delete record ?');" })
+
+    </td>
+</tr>
+    
+    }
+</table>
